@@ -99,8 +99,76 @@ Les résultats ont été analysés et les meilleurs modèles ont été sauvegard
 
 En conclusion, ce TP nous a permis de comprendre le processus complet de création de modèles de prédiction. Nous avons exploré différentes approches, préparé les données de manière adéquate, entraîné et évalué plusieurs modèles, et finalement sélectionné le meilleur modèle en utilisant la recherche d'hyperparamètres. Cela démontre l'importance de comprendre chaque étape du processus de machine learning pour obtenir des modèles performants.
 
+--- 
+
+**Dataframe**
+Un DataFrame est une structure de données tabulaire bidimensionnelle, similaire à une feuille de calcul ou à une table de base de données relationnelle. C'est une structure de données clé de la bibliothèque pandas en Python. 
+
+En d'autres termes, un DataFrame peut être considéré comme une collection de séries (colonnes) alignées, où chaque série peut être de type différent (entier, chaîne de caractères, etc.). Il est extrêmement flexible et efficace pour analyser et manipuler des données.
+
+Voici quelques caractéristiques importantes d'un DataFrame :
+
+1. **Structure Tabulaire :** Les données sont organisées sous forme de table à deux dimensions, où chaque ligne représente une observation et chaque colonne représente une variable.
+
+2. **Indices et Colonnes :** Les lignes et les colonnes d'un DataFrame sont associées à des indices, ce qui facilite l'accès et la manipulation des données.
+
+3. **Types de Données Mixtes :** Chaque colonne peut avoir un type de données différent (entier, flottant, chaîne de caractères, etc.).
+
+4. **Opérations Rapides :** Les opérations sur les DataFrames, telles que le filtrage, la sélection, et les opérations mathématiques, sont optimisées pour des performances élevées.
+
+**Matrice de corrélation**
+
+
+Une matrice de corrélation est une table qui montre les coefficients de corrélation entre de nombreuses variables. Chaque cellule de la matrice représente le coefficient de corrélation entre deux variables. Cette valeur est comprise entre -1 et 1. Une valeur de 1 indique une corrélation positive parfaite, -1 indique une corrélation négative parfaite, et 0 indique l'absence de corrélation.
+
+La matrice de corrélation est souvent utilisée pour explorer la dépendance linéaire entre les variables dans un ensemble de données. Elle est utile dans l'analyse exploratoire des données, en particulier lorsqu'on travaille avec des modèles statistiques ou de machine learning, car elle peut fournir des informations sur la force et la direction des relations entre les variables.
+
+**Coefficient de corrélation**
+Un coefficient de corrélation mesure la force et la direction d'une relation linéaire entre deux variables. Il indique à quel point les variations d'une variable sont associées aux variations de l'autre variable. Le coefficient de corrélation varie de -1 à 1, et sa signe indique la direction de la relation.
+
+Les deux coefficients de corrélation les plus couramment utilisés sont le coefficient de corrélation de Pearson et le coefficient de corrélation de Spearman :
+
+1. **Coefficient de Corrélation de Pearson (r) :** Mesure la corrélation linéaire entre deux variables continues. Un coefficient de +1 indique une corrélation linéaire positive parfaite, -1 indique une corrélation linéaire négative parfaite, et 0 indique une absence de corrélation linéaire.
+
+2. **Coefficient de Corrélation de Spearman (ρ) :** Mesure la corrélation monotone entre deux variables, ce qui signifie qu'il capture également les relations non linéaires. Il est basé sur les rangs des données plutôt que sur les valeurs brutes.
+
+En résumé, un coefficient de corrélation fournit une mesure quantitative de la force de la relation entre deux variables, mais il ne détermine pas la causalité (c'est-à-dire quelle variable cause l'autre). Il est important de noter que la corrélation ne garantit pas la causalité, et d'autres analyses sont nécessaires pour établir des relations de cause à effet.
 
 
 
 
+Le One-Hot Encoding est une technique de représentation des variables catégorielles (ou nominatives) en tant que vecteurs binaires. Elle est souvent utilisée dans le domaine de l'apprentissage machine lorsque les modèles nécessitent des variables numériques en entrée. Le One-Hot Encoding est particulièrement utile pour traiter les variables catégorielles qui n'ont pas d'ordre intrinsèque.
 
+Voici comment fonctionne le One-Hot Encoding :
+
+1. **Création de Colonnes Binaires :** Pour chaque catégorie unique dans la variable catégorielle, une nouvelle colonne binaire est créée.
+
+2. **Assignation de Valeurs Binaires :** Dans chaque colonne nouvellement créée, une valeur binaire est attribuée. Généralement, on utilise 1 pour indiquer la présence de la catégorie et 0 pour son absence.
+
+3. **Élimination d'une Colonne pour Éviter la Multicollinéarité :** Pour éviter le piège de la multicollinéarité (corrélation élevée entre deux ou plus variables prédictives), une des colonnes binaires nouvellement créées est supprimée. C'est ce que fait l'option `drop_first=True` dans certaines implémentations, y compris dans le code que vous avez fourni.
+
+Voici un exemple simple :
+
+Supposons que nous ayons une variable catégorielle "Couleur" avec les catégories "Rouge", "Bleu" et "Vert". Le One-Hot Encoding créerait trois colonnes binaires : "Rouge", "Bleu", "Vert". Chaque ligne aurait une valeur de 1 dans la colonne correspondant à sa couleur et des zéros dans les autres colonnes.
+
+Avant le One-Hot Encoding :
+```
+Couleur
+------
+Rouge
+Bleu
+Vert
+Rouge
+```
+
+Après le One-Hot Encoding :
+```
+Rouge | Bleu | Vert
+-----|------|-----
+1    | 0    | 0
+0    | 1    | 0
+0    | 0    | 1
+1    | 0    | 0
+```
+
+Cela transforme une variable catégorielle en une forme que les algorithmes d'apprentissage machine peuvent mieux comprendre et utiliser dans leurs calculs.
